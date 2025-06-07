@@ -1,0 +1,99 @@
+<html>
+	<head>
+		<title> Name Validator App </title>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+			*{
+				font-size:35px;
+				text-align:center;
+				margin:auto;
+				font-family:'Poppins', sans-serif;
+			}
+			body {
+				background-color:#1cbb9d;
+			}
+			h1 {
+				font-size:40px;
+				width:80%;
+				background-color:#15a083;
+				color:white;
+				border-radius:20px;
+			}
+			.container {
+         		    width: 80%;
+		            max-width: 800px;
+		            padding: 40px;
+		            background-color: #f0f8ff;
+		            border: 2px solid #ccc;
+		            border-radius: 25px;
+		            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+		            margin-top: 50px;
+		        }
+
+			input{
+				width:60%;
+				border-radius:15px;
+				margin-bottom:30px;
+			}
+			input[type="submit"]{
+				background-color:#169f85;
+				color:white;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+		<h1> Name Validator App </h1>
+		</br>
+		<form onsubmit="show()">
+ 			<input type="text" id="name" placeholder="Enter your Name" />
+			</br>
+			<input type="submit" />
+		</form>
+		</br>
+		<h2 id="msg" /> 
+		</div>
+	<script>
+		function show(){
+			event.preventDefault();
+			let name = document.getElementById("name");
+			
+			if(name.value === "") {
+				alert("Name should not be blank");
+				msg.innerHTML = "";
+				name.focus();
+				return ;
+			}
+			if(name.value.trim() === "") {
+				alert("Name Should not contain blank spaces.");
+				name.value = "";
+				name.focus();
+				msg.innerHTML = "";
+				return ;
+			}
+			if(!name.value.match(/^[A-Za-z ]+$/)){
+				alert("Name should only contain alphabets.");
+				name.value = "";
+				name.focus();
+				msg.innerHTML = "";
+				return ;
+			}
+			
+			let d = new Date();
+			let hr = d.getHours();
+			
+			if(hr<12){
+				msg.innerHTML = "Good Morning " + name.value;
+			} else if (hr<16) {
+ 				msg.innerHTML = "Good Afternoon " + name.value;
+			} else {
+				msg.innerHTML = "Good Evening " + name.value;
+			}
+
+
+		}
+	</script> 
+	
+	</body>
+	
+</html>
